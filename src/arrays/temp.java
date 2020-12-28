@@ -4,32 +4,45 @@ import java.util.Scanner;
 
 public class temp 
 {
+		private static boolean validMoveAvailable(int index, int leap, int[] game)
+		{
+			return false;
+		}
 	    public static boolean canWin(int leap, int[] game)
 	    {
 	        // Return true if you can win the game; otherwise, return false.
-	        for(int i = 0; i<game.length; i++)
+        	int size = game.length;
+        	
+	    	for(int i = 0; i<size;)
 	        {
-	            if(i+leap > game.length - 1 || i+1 > game.length - 1)
-	                return true;
-	            
-	            if(game[i+leap] == 0)
-	            {
-	                i = i + leap;
-	                continue;
-	            }
-
-	            if(game[i + 1] == 0)
-	            {
-	                i++;continue;
-	            }
-
-	            if(i-1>=0 && game[i-1] == 0)
-	            {
-	                i--;continue;
-	            }
-	            return false;
-	        }
-	        return true;
+	    		if(leap + i > size -1 || i + 1 > size - 1)
+	    			return true;
+	    		
+				if(leap + i < size - 1)
+				{
+					if(game[leap + i] == 0)
+					{
+						i = i+leap;
+						continue;
+					}
+				}
+				if(i + 1 < size - 1)
+				{
+					if(game[i + 1] == 0)
+					{
+						i++;continue;
+					}
+				}
+				if(i - 1 >= 0)
+				{
+					if(game[i - 1] == 0)
+					{
+						i--;continue;
+					}			
+				}
+				return false;
+			}
+			return false;
 	    }
 
 	    public static void main(String[] args) 
